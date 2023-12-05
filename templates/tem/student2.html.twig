@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   {{ parent() }}
+   
+   <h4> hello, {{role}}</h4>
+   {% if role == "admin" and std|length >1 %}
+        There are {{std|length}} students in the list <br>
+        <ul>
+        {% for item in std%}
+        {% set gen = (item.gender=="0"?"Male":"Fale") %}
+
+            <li> {{ item.id~ '' ~ item.fName ~ '' ~ gen}}</li>
+        {% endfor %}
+        </ul>
+   {% endif %}
+{% endblock %}
+
+{% block Wellcome%}
+    <img src="{{asset('uploads/dog.jpg')}}" width="500" height="500" />
+{% endblock %}
+{# http://127.0.0.1:8000/showstd2/ #}
